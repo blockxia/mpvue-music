@@ -2,11 +2,16 @@
 
 > mpvue音乐小程序
 
-## 项目运行
+## 运行项目
+```
 ①：clone仓库，然后使用编辑器打开，把project.config.json中的appid换成你的appid
+
 ②：npm install 安装依赖
+
 ③：npm run dev 运行项目
+
 ④：使用微信开发者工具选择项目下的dist中的wx文件夹，即可预览效果
+```
 
 ### Build Setup
 
