@@ -1,7 +1,7 @@
 <template>
   <div class="year-progess">
     <progress :percent="percent" activeColor="#EA5A49"/>
-    <p>{{year}}已经过去{{days}}天，{{percent}}%</p>
+    <p class="text">{{year}}已经过去{{days}}天，{{percent}}%</p>
   </div>
 </template>
 
@@ -46,12 +46,11 @@ export default {
 }
 </script>
 
-<style scoped>
- .year-progess {
-   width: 100%;
-   margin-bottom: 20px;
- }
- .progress {
-     margin-bottom: 10px;
-   }
+<style lang="stylus" scoped>
+ .year-progess
+    width 100%
+    margin-top 20rpx
+    text-align center
+    .text
+      margin-top 5rpx
 </style>
