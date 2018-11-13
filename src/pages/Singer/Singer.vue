@@ -1,10 +1,10 @@
 <template>
   <div class="singer">
     <div v-for="(group, index) in singerList" :key="index">
-      <h3>{{group.title}}</h3>
-      <div @click="selectSinger(item)" class="cell-content" v-for="(item, itemIndex) in group.item" :key="itemIndex">
-        <img class="singer-img" :src="item.img">
-        <span class="singer-name">{{item.name}}</span>
+      <h3 class="group-title">{{group.title}}</h3>
+      <div @click="selectSinger(item)" class="item" v-for="(item, itemIndex) in group.item" :key="itemIndex">
+        <img class="img" :src="item.img">
+        <span class="name">{{item.name}}</span>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@ export default {
     this.getSinger()
   },
   methods: {
+    // 获取歌手列表
     getSinger () {
       getSingerList().then((res) => {
         this.singerList = this.normalize(res.list)
@@ -71,11 +72,42 @@ export default {
         return a.title.charCodeAt(0) - b.title.charCodeAt(0)
       })
       return hot.concat(usual)
+    },
+    selectSinger (item) {
+      wx.showModal({
+        content: '歌曲信息待抓取',
+        showCancel: false
+      })
     }
   }
 }
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
+  .singer
+    width 100%
+    .group-title
+      width 100%
+      height 100rpx
+      line-height 100rpx
+      padding-left 20rpx
+      font-size 32rpx
+      color #df840d
+      background #fafafa
+    .item
+      display flex
+      width 100%
+      height 120rpx
+      border-bottom 1px solid #fafafa
+      box-sizing border-box
+      .img
+        width 100rpx
+        height 100rpx
+        border-radius 50%
+        margin 10rpx 0 0 20rpx
+      .name
+        margin-left 50rpx
+        line-height 120rpx
+        font-size 30rpx
+        color #999
 </style>
