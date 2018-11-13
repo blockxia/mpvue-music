@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/Music/main", "pages/UserCenter/main"],
+  "pages": ["pages/Singer/main", "pages/UserCenter/main"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -10,7 +10,7 @@
     "selectedColor": "#df840d",
     "list": [
       {
-        "pagePath": "pages/Music/main",
+        "pagePath": "pages/Singer/main",
         "text": "音乐",
         "iconPath": "static/images/music.png",
         "selectedIconPath": "static/images/music-active.png"
