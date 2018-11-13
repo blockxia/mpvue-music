@@ -1,0 +1,22 @@
+
+.user-center.data-v-1fbb1fe7 {
+  padding: 0 30rpx;
+}
+.user-center .user-info.data-v-1fbb1fe7 {
+  margin-top: 100rpx;
+  text-align: center;
+}
+.user-center .user-info .userImg.data-v-1fbb1fe7 {
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 290rpx;
+  margin-bottom: 30rpx;
+}
+.year-progess.data-v-7bd70ef4 {
+  width: 100%;
+  margin-top: 20rpx;
+  text-align: center;
+}
+.year-progess .text.data-v-7bd70ef4 {
+  margin-top: 5rpx;
+}

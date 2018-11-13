@@ -1,0 +1,10 @@
+<template name="c817d2a0">
+  <view class="_div data-v-620fdbe7 singer">
+    <view wx:key="index" key="{{index}}" wx:for="{{singerList}}" wx:for-index="index" wx:for-item="group" class="_div data-v-620fdbe7">
+      <view class="_h3 data-v-620fdbe7 group-title">{{group.title}}</view>
+      <view bindtap="handleProxy" class="_div data-v-620fdbe7 item" wx:key="itemIndex" key="{{itemIndex}}" data-eventid="{{'0-'+index+'-'+itemIndex}}" data-comkey="{{$k}}" wx:for="{{group.item}}" wx:for-index="itemIndex" wx:for-item="item">
+        <image class="_img data-v-620fdbe7 img" src="{{item.img}}"></image> <label class="_span data-v-620fdbe7 name">{{item.name}}</label>
+      </view>
+    </view>
+  </view>
+</template>
