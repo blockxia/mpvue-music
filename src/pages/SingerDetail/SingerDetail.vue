@@ -7,7 +7,12 @@
         </div>
         <div class="blur"></div>
       </div>
-      <div class="song"></div>
+      <div class="song-wrapper">
+        <div @click="selectItem(item, index)" class="song" v-for="(item, index) in songs" :key="index">
+          <h3 class="song-name">{{item.songname}}</h3>
+          <p class="singer-name">{{singerInfo.name}}·专辑·{{item.albumname}}</p>
+        </div>        
+      </div>
    </div>
 </template>
 
@@ -23,14 +28,13 @@ export default {
   mounted () {
     this.singerInfo = this.$root.$mp.query
     this._getSingerDetail()
-    wx.setNavigationBarTitle({
-      title: '歌手详情'
-    })
+    this.setNavigator()
   },
   methods: {
     _getSingerDetail () {
       getSingerDetail(this.singerInfo.id).then((res) => {
         this.songs = this.normalizeSongs(res.list)
+        console.log(this.songs)
       })
     },
     // 抽取歌曲list中有用的数据
@@ -43,6 +47,18 @@ export default {
         }
       })
       return res
+    },
+    setNavigator () {
+      wx.setNavigationBarTitle({
+        title: '歌手详情'
+      })
+    },
+    selectItem (item, index) {
+      wx.showModal({
+        title: 'Tips',
+        content: '暂未开发',
+        showCancel: false
+      })
     }
   }
 }
@@ -85,5 +101,22 @@ export default {
         height 450rpx
         background rgba(0, 0, 0, 0.4)
         z-index 1
+    .song-wrapper
+      position absolute
+      top 450rpx
+      left 0
+      width 100%
+      background #fff
+      z-index -2
+      .song
+        padding 30rpx
+        border-bottom: 2rpx solid #fafafa;
+        .song-name
+          font-size 30rpx
+          margin-bottom 15rpx
+          color #000
+        .singer-name
+          font-size 30rpx
+          color #999
 </style>
 

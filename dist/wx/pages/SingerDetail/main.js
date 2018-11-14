@@ -91,6 +91,11 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -103,9 +108,7 @@ if (false) {(function () {
   mounted: function mounted() {
     this.singerInfo = this.$root.$mp.query;
     this._getSingerDetail();
-    wx.setNavigationBarTitle({
-      title: '歌手详情'
-    });
+    this.setNavigator();
   },
 
   methods: {
@@ -114,6 +117,7 @@ if (false) {(function () {
 
       Object(__WEBPACK_IMPORTED_MODULE_0__utils_api__["a" /* getSingerDetail */])(this.singerInfo.id).then(function (res) {
         _this.songs = _this.normalizeSongs(res.list);
+        console.log(_this.songs);
       });
     },
 
@@ -128,6 +132,18 @@ if (false) {(function () {
         }
       });
       return res;
+    },
+    setNavigator: function setNavigator() {
+      wx.setNavigationBarTitle({
+        title: '歌手详情'
+      });
+    },
+    selectItem: function selectItem(item, index) {
+      wx.showModal({
+        title: 'Tips',
+        content: '暂未开发',
+        showCancel: false
+      });
     }
   }
 });
@@ -154,8 +170,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   })]), _vm._v(" "), _c('div', {
     staticClass: "blur"
   })], 1), _vm._v(" "), _c('div', {
-    staticClass: "song"
-  })])
+    staticClass: "song-wrapper"
+  }, _vm._l((_vm.songs), function(item, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "song",
+      attrs: {
+        "eventid": '0-' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.selectItem(item, index)
+        }
+      }
+    }, [_c('h3', {
+      staticClass: "song-name"
+    }, [_vm._v(_vm._s(item.songname))]), _vm._v(" "), _c('p', {
+      staticClass: "singer-name"
+    }, [_vm._v(_vm._s(_vm.singerInfo.name) + "·专辑·" + _vm._s(item.albumname))])], 1)
+  }))])
 }
 var staticRenderFns = []
 render._withStripped = true
