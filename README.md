@@ -13,6 +13,11 @@
 ④：使用微信开发者工具选择项目下的dist中的wx文件夹，即可预览效果
 ```
 
+## 效果预览
+![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer.png)
+
+![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer-detail.png)
+
 ### Build Setup
 
 ``` bash
