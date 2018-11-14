@@ -10,7 +10,7 @@
     <view class="_div data-v-e44add72 song-wrapper">
       <view bindtap="handleProxy" class="_div data-v-e44add72 song" wx:key="index" key="{{index}}" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{songs}}" wx:for-index="index" wx:for-item="item">
         <view class="_h3 data-v-e44add72 song-name">{{item.songname}}</view>
-        <view class="_p data-v-e44add72 singer-name">{{singerInfo.name}}·专辑·{{item.albumname}}</view>
+        <view class="_p data-v-e44add72 singer-name">{{singerInfo.name}} ·专辑·《{{item.albumname}}》</view>
       </view>
     </view>
   </view>

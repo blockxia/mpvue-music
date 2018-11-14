@@ -187,7 +187,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "song-name"
     }, [_vm._v(_vm._s(item.songname))]), _vm._v(" "), _c('p', {
       staticClass: "singer-name"
-    }, [_vm._v(_vm._s(_vm.singerInfo.name) + "·专辑·" + _vm._s(item.albumname))])], 1)
+    }, [_vm._v(_vm._s(_vm.singerInfo.name) + " ·专辑·《" + _vm._s(item.albumname) + "》")])], 1)
   }))])
 }
 var staticRenderFns = []

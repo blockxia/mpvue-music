@@ -10,7 +10,7 @@
       <div class="song-wrapper">
         <div @click="selectItem(item, index)" class="song" v-for="(item, index) in songs" :key="index">
           <h3 class="song-name">{{item.songname}}</h3>
-          <p class="singer-name">{{singerInfo.name}}·专辑·{{item.albumname}}</p>
+          <p class="singer-name">{{singerInfo.name}} ·专辑·《{{item.albumname}}》</p>
         </div>        
       </div>
    </div>
