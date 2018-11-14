@@ -74,9 +74,11 @@ export default {
       return hot.concat(usual)
     },
     selectSinger (item) {
-      wx.showModal({
-        content: '歌曲信息待抓取',
-        showCancel: false
+      wx.navigateTo({
+        url: `/pages/SingerDetail/main?id=${item.id}&name=${item.name}&img=${item.img}`,
+        success: function () {
+          console.log('success')
+        }
       })
     }
   }

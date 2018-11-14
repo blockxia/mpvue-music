@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/Singer/main", "pages/UserCenter/main"],
+  "pages": ["pages/Singer/main", "pages/UserCenter/main", "pages/SingerDetail/main"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
