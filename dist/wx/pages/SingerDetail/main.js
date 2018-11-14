@@ -28,7 +28,7 @@ app.$mount();
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(107)
+  __webpack_require__(128)
 }
 var normalizeComponent = __webpack_require__(10)
 /* script */
@@ -73,17 +73,18 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 107:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_api__ = __webpack_require__(74);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -91,14 +92,43 @@ if (false) {(function () {
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      singerInfo: {}
+      singerInfo: {},
+      songs: []
     };
   },
   mounted: function mounted() {
     this.singerInfo = this.$root.$mp.query;
+    this._getSingerDetail();
+    wx.setNavigationBarTitle({
+      title: '歌手详情'
+    });
+  },
+
+  methods: {
+    _getSingerDetail: function _getSingerDetail() {
+      var _this = this;
+
+      Object(__WEBPACK_IMPORTED_MODULE_0__utils_api__["a" /* getSingerDetail */])(this.singerInfo.id).then(function (res) {
+        _this.songs = _this.normalizeSongs(res.list);
+      });
+    },
+
+    // 抽取歌曲list中有用的数据
+    normalizeSongs: function normalizeSongs(list) {
+      var res = [];
+      list.forEach(function (item) {
+        var musicData = item.musicData;
+
+        if (musicData.songid && musicData.albummid) {
+          res.push(musicData);
+        }
+      });
+      return res;
+    }
   }
 });
 
@@ -111,7 +141,21 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "singer-detail"
-  }, [_vm._v("\n   歌手详情\n")])
+  }, [_c('div', {
+    staticClass: "singer-info"
+  }, [_c('h3', {
+    staticClass: "name"
+  }, [_vm._v(_vm._s(_vm.singerInfo.name))]), _vm._v(" "), _c('div', {
+    staticClass: "photo"
+  }, [_c('img', {
+    attrs: {
+      "src": _vm.singerInfo.img
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "blur"
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "song"
+  })])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -123,6 +167,13 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-e44add72", esExports)
   }
 }
+
+/***/ }),
+
+/***/ 128:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 

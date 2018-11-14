@@ -1,0 +1,41 @@
+
+.singer-detail .singer-info {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.singer-detail .singer-info .name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #df840d;
+  z-index: 2;
+}
+.singer-detail .singer-info .photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450rpx;
+  overflow: hidden;
+  z-index: -1;
+}
+.singer-detail .singer-info .photo ._img {
+  width: 100%;
+}
+.singer-detail .singer-info .blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450rpx;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}

@@ -1,3 +1,12 @@
 <template name="0617e690">
-  <view class="_div data-v-e44add72 singer-detail"> 歌手详情 </view>
+  <view class="_div data-v-e44add72 singer-detail">
+    <view class="_div data-v-e44add72 singer-info">
+      <view class="_h3 data-v-e44add72 name">{{singerInfo.name}}</view>
+      <view class="_div data-v-e44add72 photo">
+        <image src="{{singerInfo.img}}" class="_img data-v-e44add72"></image>
+      </view>
+      <view class="_div data-v-e44add72 blur"></view>
+    </view>
+    <view class="_div data-v-e44add72 song"></view>
+  </view>
 </template>

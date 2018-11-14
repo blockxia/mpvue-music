@@ -7827,7 +7827,73 @@ return createLogger;
 /* 71 */,
 /* 72 */,
 /* 73 */,
-/* 74 */,
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = getSingerList;
+/* harmony export (immutable) */ __webpack_exports__["a"] = getSingerDetail;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(103);
+
+
+/**
+ * Created by xiaoqiang on 12/11/2018.
+ */
+
+// 封装微信请求
+function request(url, method, data) {
+  return new __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+    wx.request({
+      data: data,
+      method: method,
+      url: url,
+      success: function success(res) {
+        if (res.data.code === 0) {
+          resolve(res.data.data);
+        } else {
+          reject(res.data);
+        }
+      }
+    });
+  });
+}
+// 获取歌手列表
+function getSingerList() {
+  var url = 'https://c.y.qq.com/v8/fcg-bin/v8.fcg';
+  var data = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, __WEBPACK_IMPORTED_MODULE_2__config__["a" /* commonParams */], {
+    channel: 'singer',
+    page: 'list',
+    key: 'all_all_all',
+    pagesize: 100,
+    pagenum: 1,
+    hostUin: 0,
+    needNewCode: 0,
+    platform: 'yqq'
+  });
+  return request(url, 'GET', data);
+}
+// 获取歌手详情
+function getSingerDetail(singerId) {
+  var url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg';
+  var data = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, __WEBPACK_IMPORTED_MODULE_2__config__["a" /* commonParams */], {
+    hostUin: 0,
+    needNewCode: 0,
+    platform: 'yqq',
+    order: 'listen',
+    begin: 0,
+    num: 80,
+    songstatus: 1,
+    singermid: singerId
+  });
+
+  return request(url, 'GET', data);
+}
+
+/***/ }),
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8690,7 +8756,30 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 103 */,
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return commonParams; });
+/* unused harmony export options */
+/**
+ * Created by xiaoqiang on 12/11/2018.
+ */
+// 公共参数
+var commonParams = {
+  g_tk: 1928093487,
+  inCharset: 'utf-8',
+  outCharset: 'utf-8',
+  notice: 0,
+  format: 'jsonp'
+};
+
+var options = {
+  param: 'jsonpCallback',
+  prefix: 'jp'
+};
+
+/***/ }),
 /* 104 */,
 /* 105 */,
 /* 106 */,
