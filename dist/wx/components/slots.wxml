@@ -1,1 +1,2 @@
+<import src="/components/MiniPlayer.vue.wxml" />
 <import src="/components/YearProgress.vue.wxml" />

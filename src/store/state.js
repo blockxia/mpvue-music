@@ -3,6 +3,7 @@
  */
 const state = {
   // 歌手信息
-  singer: {}
+  singer: {},
+  currentSong: {}
 }
 export default state

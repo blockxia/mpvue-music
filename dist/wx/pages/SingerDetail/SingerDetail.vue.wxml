@@ -1,4 +1,4 @@
-<template name="0617e690">
+<import src="/components/MiniPlayer.vue.wxml" /><template name="0617e690">
   <view class="_div data-v-e44add72 singer-detail">
     <view class="_div data-v-e44add72 singer-info">
       <view class="_h3 data-v-e44add72 name">{{singer.name}}</view>
@@ -13,5 +13,6 @@
         <view class="_p data-v-e44add72 singer-name">{{singer.name}} ·专辑·《{{item.album}}》</view>
       </view>
     </view>
+    <view class="_div data-v-e44add72 mini-player" wx:if="{{showMiniPlayer}}"><template data="{{...$root[$kk+'0'], $root}}" is="4d02e39d"></template></view>
   </view>
 </template>

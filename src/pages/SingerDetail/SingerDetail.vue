@@ -8,10 +8,13 @@
         <div class="blur"></div>
       </div>
       <div class="song-wrapper">
-        <div @click="selectItem(item, index)" class="song" v-for="(item, index) in songs" :key="index">
+        <div @click="selectSong(item, index)" class="song" v-for="(item, index) in songs" :key="index">
           <h3 class="song-name">{{item.name}}</h3>
           <p class="singer-name">{{singer.name}} ·专辑·《{{item.album}}》</p>
         </div>        
+      </div>
+      <div class="mini-player" v-if="showMiniPlayer">
+        <v-mini-player></v-mini-player>
       </div>
    </div>
 </template>
@@ -19,11 +22,13 @@
 <script>
 import {getSingerDetail} from '@/api/singer'
 import {createSong} from '@/common/song'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
+import VMiniPlayer from '@/components/MiniPlayer'
 export default {
   data () {
     return {
-      songs: []
+      songs: [],
+      showMiniPlayer: false
     }
   },
   computed: {
@@ -59,18 +64,22 @@ export default {
         title: '歌手详情'
       })
     },
-    selectItem (item, index) {
-      wx.showModal({
-        title: 'Tips',
-        content: '暂未开发',
-        showCancel: false
-      })
-    }
+    selectSong (item, index) {
+      // console.log(item)
+      this.setCurrentSong(item)
+      this.showMiniPlayer = true
+    },
+    ...mapMutations({
+      setCurrentSong: 'SET_CURRENTSONG'
+    })
+  },
+  components: {
+    VMiniPlayer
   }
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .singer-detail
     .singer-info
       position fixed
@@ -124,5 +133,9 @@ export default {
         .singer-name
           font-size 30rpx
           color #999
+    .mini-player
+      position fixed
+      bottom 30rpx;
+      left 20rpx;
 </style>
 
