@@ -84,8 +84,12 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_singer__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_song__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_singer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_song__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(64);
+
 //
 //
 //
@@ -104,18 +108,20 @@ if (false) {(function () {
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      singerInfo: {},
       songs: []
     };
   },
+
+  computed: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(['singer'])),
   mounted: function mounted() {
-    this.singerInfo = this.$root.$mp.query;
+    // this.singer = this.$root.$mp.query // 假如使用微信小程序传参方式传递歌手信息，用此方法获取歌手信息
     this._getSingerDetail();
     this.setNavigator();
   },
@@ -124,9 +130,9 @@ if (false) {(function () {
     _getSingerDetail: function _getSingerDetail() {
       var _this = this;
 
-      Object(__WEBPACK_IMPORTED_MODULE_0__api_singer__["a" /* getSingerDetail */])(this.singerInfo.id).then(function (res) {
+      Object(__WEBPACK_IMPORTED_MODULE_1__api_singer__["a" /* getSingerDetail */])(this.singer.id).then(function (res) {
         _this.songs = _this.normalizeSongs(res.list);
-        console.log(_this.songs);
+        // console.log(this.songs)
       });
     },
 
@@ -137,7 +143,7 @@ if (false) {(function () {
         var musicData = item.musicData;
 
         if (musicData.songid && musicData.albummid) {
-          res.push(Object(__WEBPACK_IMPORTED_MODULE_1__common_song__["a" /* createSong */])(musicData));
+          res.push(Object(__WEBPACK_IMPORTED_MODULE_2__common_song__["a" /* createSong */])(musicData));
         }
       });
       return res;
@@ -225,7 +231,7 @@ var Song = function () {
         var vkey = res.items[0].vkey;
         _this.url = 'http://dl.stream.qqmusic.qq.com/' + _this.filename + '?vkey=' + vkey + '&guid=' + Object(__WEBPACK_IMPORTED_MODULE_3__uid__["a" /* getUid */])() + '&uin=0&fromtag=66';
         urlMap[_this.id] = _this.url;
-        console.log(_this.url);
+        // console.log(this.url)
       });
     }
   }]);
@@ -308,11 +314,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "singer-info"
   }, [_c('h3', {
     staticClass: "name"
-  }, [_vm._v(_vm._s(_vm.singerInfo.name))]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.singer.name))]), _vm._v(" "), _c('div', {
     staticClass: "photo"
   }, [_c('img', {
     attrs: {
-      "src": _vm.singerInfo.img
+      "src": _vm.singer.img
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "blur"
@@ -332,9 +338,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }, [_c('h3', {
       staticClass: "song-name"
-    }, [_vm._v(_vm._s(item.songname))]), _vm._v(" "), _c('p', {
+    }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('p', {
       staticClass: "singer-name"
-    }, [_vm._v(_vm._s(_vm.singerInfo.name) + " ·专辑·《" + _vm._s(item.albumname) + "》")])], 1)
+    }, [_vm._v(_vm._s(_vm.singer.name) + " ·专辑·《" + _vm._s(item.album) + "》")])], 1)
   }))])
 }
 var staticRenderFns = []

@@ -12,6 +12,7 @@
 
 <script>
 import {getSingerList} from '@/api/singer'
+import {mapMutations} from 'vuex'
 export default {
   data () {
     return {
@@ -26,7 +27,7 @@ export default {
     getSinger () {
       getSingerList().then((res) => {
         this.singerList = this.normalize(res.list)
-        console.log(this.singerList)
+        // console.log(this.singerList)
       })
     },
     // 格式化歌手接口数据
@@ -73,14 +74,24 @@ export default {
       })
       return hot.concat(usual)
     },
-    selectSinger (item) {
+    selectSinger (singer) {
+      // 使用vuex实现
+      this.setSinger(singer)
       wx.navigateTo({
-        url: `/pages/SingerDetail/main?id=${item.id}&name=${item.name}&img=${item.img}`,
-        success: function () {
-          console.log('success')
-        }
+        url: '/pages/SingerDetail/main'
       })
-    }
+
+      // 使用微信小程序传参方式实现
+      // wx.navigateTo({
+      //   url: `/pages/SingerDetail/main?id=${item.id}&name=${item.name}&img=${item.img}`,
+      //   success: function () {
+      //     console.log('success')
+      //   }
+      // })
+    },
+    ...mapMutations({
+      setSinger: 'SET_SINGER'
+    })
   }
 }
 </script>

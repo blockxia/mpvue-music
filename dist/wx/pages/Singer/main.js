@@ -132,7 +132,11 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_singer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_singer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(64);
+
 //
 //
 //
@@ -145,6 +149,7 @@ if (false) {(function () {
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -157,14 +162,14 @@ if (false) {(function () {
     this.getSinger();
   },
 
-  methods: {
+  methods: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({
     // 获取歌手列表
     getSinger: function getSinger() {
       var _this = this;
 
-      Object(__WEBPACK_IMPORTED_MODULE_0__api_singer__["b" /* getSingerList */])().then(function (res) {
+      Object(__WEBPACK_IMPORTED_MODULE_1__api_singer__["b" /* getSingerList */])().then(function (res) {
         _this.singerList = _this.normalize(res.list);
-        console.log(_this.singerList);
+        // console.log(this.singerList)
       });
     },
 
@@ -212,15 +217,24 @@ if (false) {(function () {
       });
       return hot.concat(usual);
     },
-    selectSinger: function selectSinger(item) {
+    selectSinger: function selectSinger(singer) {
+      // 使用vuex实现
+      this.setSinger(singer);
       wx.navigateTo({
-        url: '/pages/SingerDetail/main?id=' + item.id + '&name=' + item.name + '&img=' + item.img,
-        success: function success() {
-          console.log('success');
-        }
+        url: '/pages/SingerDetail/main'
       });
+
+      // 使用微信小程序传参方式实现
+      // wx.navigateTo({
+      //   url: `/pages/SingerDetail/main?id=${item.id}&name=${item.name}&img=${item.img}`,
+      //   success: function () {
+      //     console.log('success')
+      //   }
+      // })
     }
-  }
+  }, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapMutations */])({
+    setSinger: 'SET_SINGER'
+  }))
 });
 
 /***/ })

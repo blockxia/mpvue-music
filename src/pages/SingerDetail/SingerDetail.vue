@@ -1,16 +1,16 @@
 <template>
    <div class="singer-detail">
       <div class="singer-info">
-        <h3 class="name">{{singerInfo.name}}</h3>
+        <h3 class="name">{{singer.name}}</h3>
         <div class="photo">
-          <img :src="singerInfo.img">
+          <img :src="singer.img">
         </div>
         <div class="blur"></div>
       </div>
       <div class="song-wrapper">
         <div @click="selectItem(item, index)" class="song" v-for="(item, index) in songs" :key="index">
-          <h3 class="song-name">{{item.songname}}</h3>
-          <p class="singer-name">{{singerInfo.name}} ·专辑·《{{item.albumname}}》</p>
+          <h3 class="song-name">{{item.name}}</h3>
+          <p class="singer-name">{{singer.name}} ·专辑·《{{item.album}}》</p>
         </div>        
       </div>
    </div>
@@ -19,23 +19,28 @@
 <script>
 import {getSingerDetail} from '@/api/singer'
 import {createSong} from '@/common/song'
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      singerInfo: {},
       songs: []
     }
   },
+  computed: {
+    ...mapGetters([
+      'singer'
+    ])
+  },
   mounted () {
-    this.singerInfo = this.$root.$mp.query
+    // this.singer = this.$root.$mp.query // 假如使用微信小程序传参方式传递歌手信息，用此方法获取歌手信息
     this._getSingerDetail()
     this.setNavigator()
   },
   methods: {
     _getSingerDetail () {
-      getSingerDetail(this.singerInfo.id).then((res) => {
+      getSingerDetail(this.singer.id).then((res) => {
         this.songs = this.normalizeSongs(res.list)
-        console.log(this.songs)
+        // console.log(this.songs)
       })
     },
     // 抽取歌曲list中有用的数据

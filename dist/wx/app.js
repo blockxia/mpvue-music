@@ -7,22 +7,18 @@ global.webpackJsonp([1],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(63);
 
 
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.productionTip = false;
+__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */].mpType = 'app';
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.config.productionTip = false;
-__WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */].mpType = 'app';
-
-var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __WEBPACK_IMPORTED_MODULE_2__App__["a" /* default */], {
-  store: __WEBPACK_IMPORTED_MODULE_3__store__["a" /* default */]
-}));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$store = __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */];
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */]);
 app.$mount();
 
 /***/ }),
@@ -161,31 +157,11 @@ var debug = "development" !== 'production';
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singer", function() { return singer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "playList", function() { return playList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentIndex", function() { return currentIndex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "playing", function() { return playing; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentSong", function() { return currentSong; });
 /**
  * Created by xiaoqiang on 12/11/2018.
  */
 var singer = function singer(state) {
   return state.singer;
-};
-
-var playList = function playList(state) {
-  return state.playList;
-};
-
-var currentIndex = function currentIndex(state) {
-  return state.currentIndex;
-};
-
-var playing = function playing(state) {
-  return state.playing;
-};
-
-var currentSong = function currentSong(state) {
-  return state.playList[state.currentIndex] || {};
 };
 
 /***/ }),
@@ -199,13 +175,7 @@ var currentSong = function currentSong(state) {
  */
 var state = {
   // 歌手信息
-  singer: {},
-  // 当前播放列表
-  playList: [],
-  // 当前歌曲索引
-  currentIndex: -1,
-  // 播放状态
-  playing: false
+  singer: {}
 };
 /* harmony default export */ __webpack_exports__["a"] = (state);
 
@@ -219,23 +189,14 @@ var state = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutation_types__ = __webpack_require__(72);
 
-
-var _mutations;
-
 /**
  * Created by xiaoqiang on 12/11/2018.
  */
 
 
-var mutations = (_mutations = {}, __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["d" /* SET_SINGER */], function (state, singer) {
+var mutations = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()({}, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["a" /* SET_SINGER */], function (state, singer) {
   state.singer = singer;
-}), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* SET_PLAYLIST */], function (state, list) {
-  state.playList = list;
-}), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["a" /* SET_CURRENT_INDEX */], function (state, index) {
-  state.currentIndex = index;
-}), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_PLAYING_STATE */], function (state, flag) {
-  state.playing = flag;
-}), _mutations);
+});
 /* harmony default export */ __webpack_exports__["a"] = (mutations);
 
 /***/ }),
@@ -244,29 +205,11 @@ var mutations = (_mutations = {}, __WEBPACK_IMPORTED_MODULE_0_babel_runtime_help
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SET_SINGER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_PLAYING_STATE; });
-/* unused harmony export SET_FULL_SCREEN */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SET_PLAYLIST; });
-/* unused harmony export SET_SEQUENCE_LIST */
-/* unused harmony export SET_PLAY_MODE */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SET_CURRENT_INDEX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SET_SINGER; });
 /**
  * Created by xiaoqiang on 12/11/2018.
  */
 var SET_SINGER = 'SET_SINGER';
-
-var SET_PLAYING_STATE = 'SET_PLAYING_STATE';
-
-var SET_FULL_SCREEN = 'SET_FULL_SCREEN';
-
-var SET_PLAYLIST = 'SET_PLAYLIST';
-
-var SET_SEQUENCE_LIST = 'SET_SEQUENCE_LIST';
-
-var SET_PLAY_MODE = 'SET_PLAY_MODE';
-
-var SET_CURRENT_INDEX = 'SET_CURRENT_INDEX';
 
 /***/ })
 
