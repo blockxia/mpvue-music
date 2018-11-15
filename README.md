@@ -1,4 +1,4 @@
-# my-project
+# mpvue-music
 
 > mpvue音乐小程序
 
