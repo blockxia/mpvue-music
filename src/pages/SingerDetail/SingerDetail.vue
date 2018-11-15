@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import {getSingerDetail} from '@/utils/api'
+import {getSingerDetail} from '@/api/singer'
+import {createSong} from '@/common/song'
 export default {
   data () {
     return {
@@ -43,7 +44,7 @@ export default {
       list.forEach((item) => {
         let {musicData} = item
         if (musicData.songid && musicData.albummid) {
-          res.push(musicData)
+          res.push(createSong(musicData))
         }
       })
       return res

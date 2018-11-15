@@ -1,15 +1,15 @@
 require("../../common/manifest.js");
 require("../../common/vendor.js");
-global.webpackJsonp([4],{
+global.webpackJsonp([3],{
 
-/***/ 105:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SingerDetail__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SingerDetail__ = __webpack_require__(108);
 
 
 
@@ -19,16 +19,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 106:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_SingerDetail_vue__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_e44add72_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_SingerDetail_vue__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_SingerDetail_vue__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_e44add72_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_SingerDetail_vue__ = __webpack_require__(115);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(128)
+  __webpack_require__(109)
 }
 var normalizeComponent = __webpack_require__(10)
 /* script */
@@ -73,11 +73,19 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 108:
+/***/ 109:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_api__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_singer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_song__ = __webpack_require__(111);
 //
 //
 //
@@ -96,6 +104,7 @@ if (false) {(function () {
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -115,7 +124,7 @@ if (false) {(function () {
     _getSingerDetail: function _getSingerDetail() {
       var _this = this;
 
-      Object(__WEBPACK_IMPORTED_MODULE_0__utils_api__["a" /* getSingerDetail */])(this.singerInfo.id).then(function (res) {
+      Object(__WEBPACK_IMPORTED_MODULE_0__api_singer__["a" /* getSingerDetail */])(this.singerInfo.id).then(function (res) {
         _this.songs = _this.normalizeSongs(res.list);
         console.log(_this.songs);
       });
@@ -128,7 +137,7 @@ if (false) {(function () {
         var musicData = item.musicData;
 
         if (musicData.songid && musicData.albummid) {
-          res.push(musicData);
+          res.push(Object(__WEBPACK_IMPORTED_MODULE_1__common_song__["a" /* createSong */])(musicData));
         }
       });
       return res;
@@ -150,7 +159,145 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 109:
+/***/ 111:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = createSong;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_song__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__uid__ = __webpack_require__(45);
+
+
+/**
+ * Created by xiaoqiang on 22/12/2017.
+ */
+
+
+var urlMap = {};
+
+var Song = function () {
+  function Song(_ref) {
+    var id = _ref.id,
+        mid = _ref.mid,
+        singer = _ref.singer,
+        name = _ref.name,
+        album = _ref.album,
+        duration = _ref.duration,
+        image = _ref.image,
+        url = _ref.url;
+
+    __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default()(this, Song);
+
+    this.id = id;
+    this.mid = mid;
+    this.singer = singer;
+    this.name = name;
+    this.album = album;
+    this.duration = duration;
+    this.image = image;
+    this.filename = 'C400' + this.mid + '.m4a';
+    // 确保一首歌曲的 id 只对应一个 url
+    if (urlMap[this.id]) {
+      this.url = urlMap[this.id];
+    } else {
+      if (url) {
+        this.url = url;
+        urlMap[this.id] = url;
+      } else {
+        this._genUrl();
+      }
+    }
+  }
+
+  __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default()(Song, [{
+    key: '_genUrl',
+    value: function _genUrl() {
+      var _this = this;
+
+      if (this.url) {
+        return;
+      }
+      Object(__WEBPACK_IMPORTED_MODULE_2__api_song__["a" /* getVKey */])(this.mid, this.filename).then(function (res) {
+        var vkey = res.items[0].vkey;
+        _this.url = 'http://dl.stream.qqmusic.qq.com/' + _this.filename + '?vkey=' + vkey + '&guid=' + Object(__WEBPACK_IMPORTED_MODULE_3__uid__["a" /* getUid */])() + '&uin=0&fromtag=66';
+        urlMap[_this.id] = _this.url;
+        console.log(_this.url);
+      });
+    }
+  }]);
+
+  return Song;
+}();
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Song);
+
+
+function createSong(musicData) {
+  return new Song({
+    id: musicData.songid,
+    mid: musicData.songmid,
+    singer: filterSinger(musicData.singer),
+    name: musicData.songname,
+    album: musicData.albumname,
+    duration: musicData.interval,
+    image: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000' + musicData.albummid + '.jpg?max_age=2592000'
+  });
+}
+
+function filterSinger(singer) {
+  var ret = [];
+  if (!singer) {
+    return '';
+  }
+  singer.forEach(function (s) {
+    ret.push(s.name);
+  });
+  return ret.join('/');
+}
+
+/***/ }),
+
+/***/ 114:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getVKey;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__request__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_uid__ = __webpack_require__(45);
+
+/**
+ * Created by xiaoqiang on 08/01/2018.
+ */
+
+
+
+function getVKey(songmid, filename) {
+  var url = 'https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg';
+
+  var data = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, __WEBPACK_IMPORTED_MODULE_1__config__["a" /* commonParams */], {
+    cid: 205361747,
+    format: 'json',
+    platform: 'yqq',
+    hostUin: 0,
+    needNewCode: 0,
+    uin: 0,
+    songmid: songmid,
+    filename: filename,
+    guid: Object(__WEBPACK_IMPORTED_MODULE_3__common_uid__["a" /* getUid */])()
+  });
+  return Object(__WEBPACK_IMPORTED_MODULE_2__request__["a" /* request */])(url, 'GET', data);
+}
+
+/***/ }),
+
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -203,12 +350,35 @@ if (false) {
 
 /***/ }),
 
-/***/ 128:
-/***/ (function(module, exports) {
+/***/ 45:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getUid;
+// 获取uid用于获取歌曲地址；保存下来，避免每次都获取
+
+var _uid = 0;
+var UID_KEY = '__uid__';
+
+function getUid() {
+  if (_uid) {
+    return _uid;
+  }
+  _uid = wx.getStorage({
+    key: UID_KEY
+  });
+  if (!_uid) {
+    var t = new Date().getUTCMilliseconds();
+    _uid = Math.round(2147483647 * Math.random()) * t % 1e10;
+    wx.setStorage({
+      key: UID_KEY,
+      data: _uid
+    });
+  }
+  return _uid;
+}
 
 /***/ })
 
-},[105]);
+},[107]);
 //# sourceMappingURL=main.js.map

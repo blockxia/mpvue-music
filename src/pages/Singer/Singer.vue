@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {getSingerList} from '@/utils/api'
+import {getSingerList} from '@/api/singer'
 export default {
   data () {
     return {
