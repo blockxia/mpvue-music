@@ -1,6 +1,7 @@
 # mpvue-music
+> Introduce:
 
-> mpvue音乐小程序
+[https://ecmascripter.blog.csdn.net/article/details/84039319](https://ecmascripter.blog.csdn.net/article/details/84039319)
 
 ## 运行项目
 ```
@@ -17,21 +18,3 @@
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer.png)
 
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer-detail.png)
-
-### Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
