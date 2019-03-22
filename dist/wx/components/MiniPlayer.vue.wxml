@@ -1,3 +1,0 @@
-<template name="4d02e39d">
-  <view class="_div data-v-097b91d8 mini-player"><audio poster="{{currentSong.image}}" name="{{currentSong.name}}" author="{{currentSong.singer}}" src="{{currentSong.url}}" id="currentSong" controls class="_audio data-v-097b91d8"></audio></view>
-</template>
