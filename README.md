@@ -1,5 +1,5 @@
 # mpvue-music
-
+[Doc:https://ecmascripter.blog.csdn.net/article/details/84039319](https://ecmascripter.blog.csdn.net/article/details/84039319)
 > mpvue音乐小程序
 
 ## 运行项目
