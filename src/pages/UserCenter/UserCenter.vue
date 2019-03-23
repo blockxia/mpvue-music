@@ -20,15 +20,19 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
-  .user-center 
-    padding: 0 30rpx
-    .user-info 
-      margin-top: 100rpx
-      text-align: center
-      .userImg
-        width 120rpx
-        height 120rpx
-        margin-left: 290rpx
-        margin-bottom 30rpx
+<style lang="scss" scoped>
+  .user-center {
+    padding: 0 30rpx;
+    .user-info {
+      margin-top: 100rpx;
+      text-align: center;  
+      .userImg {
+        width: 120rpx;
+        height: 120rpx;
+        margin-left: 290rpx;
+        margin-bottom: 30rpx;
+      }  
+    } 
+  }
+
 </style>

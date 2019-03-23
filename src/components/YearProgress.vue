@@ -46,11 +46,13 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
- .year-progess
-    width 100%
-    margin-top 20rpx
-    text-align center
-    .text
-      margin-top 5rpx
+<style lang="scss" scoped>
+.year-progess {
+    width: 100%;
+    margin-top: 20rpx;
+    text-align: center;
+    .text {
+      margin-top: 5rpx;
+    }
+}
 </style>

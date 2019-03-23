@@ -96,31 +96,36 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-  .singer
-    width 100%
-    .group-title
-      width 100%
-      height 100rpx
-      line-height 100rpx
-      padding-left 20rpx
-      font-size 32rpx
-      color #df840d
-      background #fafafa
-    .item
-      display flex
-      width 100%
-      height 120rpx
-      border-bottom 1px solid #fafafa
-      box-sizing border-box
-      .img
-        width 100rpx
-        height 100rpx
-        border-radius 50%
-        margin 10rpx 0 0 20rpx
-      .name
-        margin-left 50rpx
-        line-height 120rpx
-        font-size 30rpx
-        color #999
+<style lang="scss" scoped>
+.singer {
+  width: 100%;
+  .group-title {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding-left: 20rpx;
+    font-size: 32rpx;
+    color: #df840d;
+    background: #fafafa;
+  }
+  .item {
+      display: flex;
+      width: 100%;
+      height: 120rpx;
+      border-bottom: 1px solid #fafafa;
+      box-sizing: border-box;
+      .img {
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 50%;
+        margin: 10rpx 0 0 20rpx;
+      }
+      .name {
+        margin-left: 50rpx;
+        line-height: 120rpx;
+        font-size: 30rpx;
+        color: #999;
+      }
+  }
+}
 </style>

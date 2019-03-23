@@ -79,63 +79,74 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-  .singer-detail
-    .singer-info
-      position fixed
-      top 0
-      left 0
-      width 100%
-      .name
-        position absolute
-        top 0
-        left 0
-        width 100%
-        height 100rpx
-        line-height 100rpx
-        text-align center
-        font-size 40rpx
-        font-weight bold
-        color #df840d
-        z-index 2
-      .photo
-        position absolute
-        top 0
-        left 0
-        width 100%
-        height 450rpx
-        overflow hidden
-        z-index -1
-        img
-          width 100%
-      .blur
-        position absolute
-        top 0
-        left 0
-        width 100%
-        height 450rpx
-        background rgba(0, 0, 0, 0.4)
-        z-index 1
-    .song-wrapper
-      position absolute
-      top 450rpx
-      left 0
-      width 100%
-      background #fff
-      z-index -2
-      .song
-        padding 30rpx
+<style lang="scss" scoped>
+  .singer-detail {
+    .singer-info {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      .name {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100rpx;
+        line-height: 100rpx;
+        text-align: center;
+        font-size: 40rpx;
+        font-weight: bold;
+        color: #df840d;
+        z-index: 2;
+      }
+      .photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 450rpx;
+        overflow: hidden;;
+        z-index: -1;
+        img {
+          width: 100%;
+        }
+        .blur {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 450rpx;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 1;
+        }
+      }
+    }
+    .song-wrapper {
+      position: absolute;
+      top: 450rpx;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      z-index: -2;
+      .song {
+        padding: 30rpx;
         border-bottom: 2rpx solid #fafafa;
-        .song-name
-          font-size 30rpx
-          margin-bottom 15rpx
-          color #000
-        .singer-name
-          font-size 30rpx
-          color #999
-    .mini-player
-      position fixed
-      bottom 30rpx;
-      left 20rpx;
+        .song-name {
+          font-size: 30rpx;
+          margin-bottom: 15rpx;
+          color: #000;
+        }
+        .singer-name {
+          font-size: 30rpx;
+          color: #999;
+        }
+      }
+    }
+    .mini-player {
+      position: fixed;
+      bottom: 30rpx;
+      left: 20rpx;
+    }
+  }
 </style>
 

@@ -38,11 +38,13 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-  .mini-player
-    width 100%
-    height 120rpx
-    audio
-      width 100%
-      height 120rpx
+<style lang="scss">
+  .mini-player {
+    width: 100%;
+    height: 120rpx;
+    .audio {
+      width: 100%;
+      height: 120rpx;
+    }
+  }
 </style>
