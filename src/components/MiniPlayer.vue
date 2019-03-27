@@ -1,6 +1,7 @@
 <template>
-  <div class="mini-player">
-    <audio :poster="currentSong.image" :name="currentSong.name" :author="currentSong.singer" :src="currentSong.url" id="currentSong" controls></audio>
+  <div class="mini-player" v-if="currentSong.name">
+    <img class="logo" :src="currentSong.image"/>
+    <marquee class="des" behavior="scroll">{{currentSong.name}} ({{currentSong.singer}})</marquee>
  </div>
 </template>
 
@@ -22,15 +23,21 @@ export default {
   },
   methods: {
     createAudioContext () {
-      this.audioCtx = wx.createAudioContext('currentSong')
-      this.audioCtx.play()
+      if (this.innerAudioContext) {
+        this.innerAudioContext.stop()
+      }
+      this.innerAudioContext = wx.createInnerAudioContext()
+      this.innerAudioContext.src = this.currentSong.url
+      this.innerAudioContext.play()
+      this.innerAudioContext.onPlay(() => {
+        console.log(`歌曲《${this.currentSong.name}》开始播放,若没声音代表歌曲抓取失败，请换曲试试`)
+      })
     }
   },
   watch: {
     'currentSong': {
       handler (newVal) {
-        this.audioCtx.play()
-        console.log('dddd')
+        this.createAudioContext()
       },
       deep: true
     }
@@ -39,12 +46,24 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../assets/style/animate.css';
   .mini-player {
+    display: flex;
     width: 100%;
     height: 120rpx;
-    .audio {
-      width: 100%;
+    background: #fff;
+    border-top: 2rpx solid #fafafa;
+    .logo {
+      width: 120rpx;
       height: 120rpx;
+      border-radius: 50%;
+      animation: rotate 7s linear infinite;
+    }
+    .des {
+      flex: 1;
+      padding-left: 40rpx;
+      line-height: 120rpx;
+      font-size: 40rpx;
     }
   }
 </style>

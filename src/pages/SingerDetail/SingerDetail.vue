@@ -13,7 +13,7 @@
           <p class="singer-name">{{singer.name}} ·专辑·《{{item.album}}》</p>
         </div>        
       </div>
-      <div class="mini-player" v-if="showMiniPlayer">
+      <div class="mini-player">
         <v-mini-player></v-mini-player>
       </div>
    </div>
@@ -27,8 +27,7 @@ import VMiniPlayer from '@/components/MiniPlayer'
 export default {
   data () {
     return {
-      songs: [],
-      showMiniPlayer: false
+      songs: []
     }
   },
   computed: {
@@ -144,8 +143,8 @@ export default {
     }
     .mini-player {
       position: fixed;
-      bottom: 30rpx;
-      left: 20rpx;
+      bottom: 0;
+      z-index: 666;
     }
   }
 </style>
