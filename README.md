@@ -18,3 +18,5 @@
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer.png)
 
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer-detail.png)
+
+![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/song-play.png)
