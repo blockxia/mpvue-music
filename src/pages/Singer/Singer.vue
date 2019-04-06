@@ -1,5 +1,8 @@
 <template>
-  <div class="singer">
+  <div class="singer fixTop">
+    <div class="mini-player" v-if="currentSong.name">
+      <v-mini-player></v-mini-player>
+    </div>
     <div v-for="(group, index) in singerList" :key="index">
       <h3 class="group-title">{{group.title}}</h3>
       <div @click="selectSinger(item)" class="item" v-for="(item, itemIndex) in group.item" :key="itemIndex">
@@ -11,8 +14,9 @@
 </template>
 
 <script>
+import VMiniPlayer from '@/components/MiniPlayer'
 import {getSingerList} from '@/api/singer'
-import {mapMutations} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 export default {
   data () {
     return {
@@ -21,6 +25,11 @@ export default {
   },
   created () {
     this.getSinger()
+  },
+  computed: {
+    ...mapGetters([
+      'currentSong'
+    ])
   },
   methods: {
     // 获取歌手列表
@@ -92,6 +101,9 @@ export default {
     ...mapMutations({
       setSinger: 'SET_SINGER'
     })
+  },
+  components: {
+    VMiniPlayer
   }
 }
 </script>
@@ -126,6 +138,9 @@ export default {
         font-size: 30rpx;
         color: #999;
       }
+  }
+  .mini-player {
+    border-bottom: 2rpx solid rgba(0, 0, 0, 0.05);
   }
 }
 </style>

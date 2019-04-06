@@ -1,5 +1,5 @@
 <template>
-  <div class="mini-player" v-if="currentSong.name">
+  <div class="mini-player">
     <img class="logo" :src="currentSong.image"/>
     <marquee class="des" behavior="scroll">{{currentSong.name}} ({{currentSong.singer}})</marquee>
  </div>
@@ -52,10 +52,10 @@ export default {
     width: 100%;
     height: 120rpx;
     background: #fff;
-    border-top: 2rpx solid #fafafa;
     .logo {
-      width: 120rpx;
-      height: 120rpx;
+      width: 100rpx;
+      height: 100rpx;
+      margin: 5rpx 0 0 20rpx;
       border-radius: 50%;
       animation: rotate 7s linear infinite;
     }
@@ -63,7 +63,7 @@ export default {
       flex: 1;
       padding-left: 40rpx;
       line-height: 120rpx;
-      font-size: 40rpx;
+      font-size: 30rpx;
     }
   }
 </style>

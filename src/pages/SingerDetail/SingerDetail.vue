@@ -1,9 +1,8 @@
 <template>
    <div class="singer-detail">
       <div class="singer-info">
-        <h3 class="name">{{singer.name}}</h3>
         <div class="photo">
-          <img :src="singer.img">
+          <img :src="currentSong.image || singer.img">
         </div>
         <div class="blur"></div>
       </div>
@@ -13,7 +12,7 @@
           <p class="singer-name">{{singer.name}} ·专辑·《{{item.album}}》</p>
         </div>        
       </div>
-      <div class="mini-player">
+      <div class="mini-player" v-if="currentSong.name">
         <v-mini-player></v-mini-player>
       </div>
    </div>
@@ -32,7 +31,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'singer'
+      'singer',
+      'currentSong'
     ])
   },
   mounted () {
@@ -60,7 +60,7 @@ export default {
     },
     setNavigator () {
       wx.setNavigationBarTitle({
-        title: '歌手详情'
+        title: this.singer.name
       })
     },
     selectSong (item, index) {
@@ -143,6 +143,7 @@ export default {
     }
     .mini-player {
       position: fixed;
+      border-top: 2rpx solid rgba(0, 0, 0, 0.05);
       bottom: 0;
       z-index: 666;
     }
