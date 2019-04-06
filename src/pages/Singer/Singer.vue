@@ -85,6 +85,8 @@ export default {
     },
     selectSinger (singer) {
       // 使用vuex实现
+      this.currentSong.imageShouldShow = 0
+      this.setCurrentSong(this.currentSong)
       this.setSinger(singer)
       wx.navigateTo({
         url: '/pages/SingerDetail/main'
@@ -99,7 +101,8 @@ export default {
       // })
     },
     ...mapMutations({
-      setSinger: 'SET_SINGER'
+      setSinger: 'SET_SINGER',
+      setCurrentSong: 'SET_CURRENTSONG'
     })
   },
   components: {

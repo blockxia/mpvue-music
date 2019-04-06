@@ -2,7 +2,7 @@
    <div class="singer-detail">
       <div class="singer-info">
         <div class="photo">
-          <img :src="currentSong.image || singer.img">
+          <img :src="(currentSong.imageShouldShow && currentSong.image) ? currentSong.image : singer.img">
         </div>
         <div class="blur"></div>
       </div>
@@ -65,6 +65,7 @@ export default {
     },
     selectSong (item, index) {
       // console.log(item)
+      item.imageShouldShow = 1
       this.setCurrentSong(item)
       this.showMiniPlayer = true
     },
