@@ -24,13 +24,13 @@ export default {
   methods: {
     createAudioContext () {
       if (this.innerAudioContext) {
-        this.innerAudioContext.stop()
+        this.innerAudioContext.destroy()
       }
       this.innerAudioContext = wx.createInnerAudioContext()
       this.innerAudioContext.src = this.currentSong.url
       this.innerAudioContext.play()
       this.innerAudioContext.onPlay(() => {
-        console.log(`歌曲《${this.currentSong.name}》开始播放,若没声音代表歌曲抓取失败，请换曲试试`)
+        console.log(`歌曲《${this.currentSong.name}》开始播放,若控制台报错/没声音证明该歌曲是qq音乐vip歌曲，无法播放，请换曲试试`)
       })
     }
   },
