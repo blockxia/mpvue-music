@@ -15,15 +15,15 @@
 ```
 
 ## 效果预览
-主页（未播放歌曲）
+#### 主页（未播放歌曲）
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer.png)
 
-歌手页（未播放歌曲）
+#### 歌手页（未播放歌曲）
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer-detail.png)
 
-歌手页（播放歌曲）
+#### 歌手页（播放歌曲）
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/song-play.png)
 
-主页页（播放歌曲）
+#### 主页页（播放歌曲）
 ![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/singer-play.png)
 
