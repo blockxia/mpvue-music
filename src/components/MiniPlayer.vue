@@ -1,7 +1,11 @@
 <template>
   <div class="mini-player">
     <img class="logo" :src="currentSong.image"/>
-    <marquee class="des" behavior="scroll">{{currentSong.name}} ({{currentSong.singer}})</marquee>
+    <div class="right">
+      <span class="item name">{{currentSong.name}} ({{currentSong.singer}})</span>
+      <span class="item play"></span>
+      <span class="item like"></span>
+    </div>
  </div>
 </template>
 
@@ -59,11 +63,32 @@ export default {
       border-radius: 50%;
       animation: rotate 7s linear infinite;
     }
-    .des {
-      flex: 1;
-      padding-left: 40rpx;
-      line-height: 120rpx;
-      font-size: 30rpx;
+    .right {
+      float: 1;
+      display: flex;
+      .item {
+        float: 1;
+        margin-left: 60rpx;
+        line-height: 120rpx;
+        &:nth-child(1) {
+          margin-left: 40rpx;
+        }
+      }
+      .name {
+        font-size: 30rpx;
+      }
+      .play {
+        width: 60rpx;
+        height: 60rpx;
+        background: url('../assets/img/play.png') no-repeat center center;
+        background-size: 100%;
+      }
+      .like {
+        width: 60rpx;
+        height: 60rpx;
+        background: url('../assets/img/like.png') no-repeat center center;
+        background-size: 100%;
+      }
     }
   }
 </style>
