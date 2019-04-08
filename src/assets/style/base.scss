@@ -1,0 +1,5 @@
+@mixin setAbsolute($top, $left) {
+  position: absolute;
+  top: $top + rpx;
+  left: $left + rpx;
+}
