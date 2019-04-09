@@ -15,7 +15,6 @@ import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      audioCtx: null,
       isPlaying: true
     }
   },
@@ -24,42 +23,16 @@ export default {
       'currentSong'
     ])
   },
-  mounted () {
-    this.createAudioContext()
-  },
   methods: {
-    createAudioContext () {
-      if (this.audioCtx) {
-        this.audioCtx.destroy()
-      }
-      this.audioCtx = wx.createInnerAudioContext()
-      this.audioCtx.src = this.currentSong.url
-      this.audioCtx.play()
-      this.audioCtx.onPlay(() => {
-        console.log(`歌曲《${this.currentSong.name}》开始播放,若控制台报错/没声音证明该歌曲是qq音乐vip歌曲，无法播放，请换曲试试`)
-      })
-    },
     control () {
-      if (this.isPlaying) {
-        this.audioCtx.pause()
-      } else {
-        this.audioCtx.play()
-      }
       this.isPlaying = !this.isPlaying
+      this.$emit('control', this.isPlaying)
     },
     like () {
       console.log('敬请期待~')
     },
     next () {
       console.log('敬请期待~')
-    }
-  },
-  watch: {
-    'currentSong': {
-      handler (newVal) {
-        this.createAudioContext()
-      },
-      deep: true
     }
   }
 }

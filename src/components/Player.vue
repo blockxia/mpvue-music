@@ -1,0 +1,61 @@
+<template>
+  <div class="player">
+      <div class="mini-player" v-show="currentSong.name">
+        <v-mini-player @control="control"></v-mini-player>
+      </div>
+  </div>
+</template>
+
+<script>
+import VMiniPlayer from '@/components/MiniPlayer'
+import {mapGetters} from 'vuex'
+export default {
+  computed: {
+    ...mapGetters([
+      'currentSong'
+    ])
+  },
+  methods: {
+    createAudioContext () {
+      if (this.audioCtx) {
+        this.audioCtx.destroy()
+      }
+      this.audioCtx = wx.createInnerAudioContext()
+      this.audioCtx.src = this.currentSong.url
+      this.audioCtx.play()
+      this.audioCtx.onPlay(() => {
+        console.log(`歌曲《${this.currentSong.name}》开始播放,若控制台报错/没声音证明该歌曲是qq音乐vip歌曲，无法播放，请换曲试试`)
+      })
+    },
+    control (state) {
+      if (state) {
+        this.audioCtx.play()
+      } else {
+        this.audioCtx.pause()
+      }
+    }
+  },
+  components: {
+    VMiniPlayer
+  },
+  watch: {
+    'currentSong': {
+      handler (newVal) {
+        this.createAudioContext()
+      },
+      deep: true
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.player {
+    .mini-player {
+      position: fixed;
+      border-top: 2rpx solid rgba(0, 0, 0, 0.05);
+      bottom: 0;
+      z-index: 666;
+    }
+}
+</style>

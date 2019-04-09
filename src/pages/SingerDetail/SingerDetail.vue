@@ -12,9 +12,7 @@
           <p class="singer-name">{{singer.name}} ·专辑·《{{item.album}}》</p>
         </div>        
       </div>
-      <div class="mini-player" v-if="currentSong.name">
-        <v-mini-player></v-mini-player>
-      </div>
+      <v-player></v-player>
    </div>
 </template>
 
@@ -22,7 +20,7 @@
 import {getSingerDetail} from '@/api/singer'
 import {createSong} from '@/common/song'
 import {mapGetters, mapMutations} from 'vuex'
-import VMiniPlayer from '@/components/MiniPlayer'
+import VPlayer from '@/components/Player'
 export default {
   data () {
     return {
@@ -36,7 +34,6 @@ export default {
     ])
   },
   mounted () {
-    // this.singer = this.$root.$mp.query // 假如使用微信小程序传参方式传递歌手信息，用此方法获取歌手信息
     this._getSingerDetail()
     this.setNavigator()
   },
@@ -74,7 +71,7 @@ export default {
     })
   },
   components: {
-    VMiniPlayer
+    VPlayer
   }
 }
 </script>
@@ -141,12 +138,6 @@ export default {
           color: #999;
         }
       }
-    }
-    .mini-player {
-      position: fixed;
-      border-top: 2rpx solid rgba(0, 0, 0, 0.05);
-      bottom: 0;
-      z-index: 666;
     }
   }
 </style>
