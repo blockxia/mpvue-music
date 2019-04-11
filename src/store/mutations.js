@@ -9,6 +9,9 @@ const mutations = {
   },
   [types.SET_CURRENTSONG] (state, song) {
     state.currentSong = song
+  },
+  [types.SET_ISPLAYING] (state, isPlaying) {
+    state.isPlaying = isPlaying
   }
 }
 export default mutations

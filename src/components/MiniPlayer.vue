@@ -11,29 +11,27 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 export default {
-  data () {
-    return {
-      isPlaying: true
-    }
-  },
   computed: {
     ...mapGetters([
-      'currentSong'
+      'currentSong',
+      'isPlaying'
     ])
   },
   methods: {
     control () {
-      this.isPlaying = !this.isPlaying
-      this.$emit('control', this.isPlaying)
+      this.setIsPlaying(!this.isPlaying)
     },
     like () {
       console.log('敬请期待~')
     },
     next () {
       console.log('敬请期待~')
-    }
+    },
+    ...mapMutations({
+      'setIsPlaying': 'SET_ISPLAYING'
+    })
   }
 }
 </script>

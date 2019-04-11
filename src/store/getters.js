@@ -4,3 +4,5 @@
 export const singer = state => state.singer
 
 export const currentSong = state => state.currentSong
+
+export const isPlaying = state => state.isPlaying

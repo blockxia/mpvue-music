@@ -1,7 +1,7 @@
 <template>
   <div class="player">
       <div class="mini-player" v-show="currentSong.name">
-        <v-mini-player @control="control"></v-mini-player>
+        <v-mini-player></v-mini-player>
       </div>
   </div>
 </template>
@@ -12,7 +12,8 @@ import {mapGetters} from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'currentSong'
+      'currentSong',
+      'isPlaying'
     ])
   },
   methods: {
@@ -26,13 +27,6 @@ export default {
       this.audioCtx.onPlay(() => {
         console.log(`歌曲《${this.currentSong.name}》开始播放,若控制台报错/没声音证明该歌曲是qq音乐vip歌曲，无法播放，请换曲试试`)
       })
-    },
-    control (state) {
-      if (state) {
-        this.audioCtx.play()
-      } else {
-        this.audioCtx.pause()
-      }
     }
   },
   components: {
@@ -44,6 +38,13 @@ export default {
         this.createAudioContext()
       },
       deep: true
+    },
+    isPlaying (newVal) {
+      if (newVal) {
+        this.audioCtx.play()
+      } else {
+        this.audioCtx.pause()
+      }
     }
   }
 }
