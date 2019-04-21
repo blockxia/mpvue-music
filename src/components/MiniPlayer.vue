@@ -29,6 +29,9 @@ export default {
       console.log('敬请期待~')
     },
     next () {
+      if (!this.isPlaying) {
+        this.setIsPlaying(true)
+      }
       let index = this.currentIndex + 1
       if (index === this.playList.length - 1) {
         index = 0
