@@ -1,7 +1,3 @@
-# mpvue-music
-> Introduce:
-
-[https://ecmascripter.blog.csdn.net/article/details/84039319](https://ecmascripter.blog.csdn.net/article/details/84039319)
 
 ## 运行项目
 ```
@@ -13,6 +9,11 @@
 
 ④：使用微信开发者工具选择项目下的dist中的wx文件夹，即可预览效果
 ```
+## 微信开发者工具配置
+```
+  微信开发者工具->详情，勾选上不校验合法域名选项，否则歌曲信息可能抓取不到，配置如图：
+```
+![Image text](https://github.com/XieTongXue/github-img/blob/master/mpvue-music/tips.png)
 
 ## 效果预览
 #### 主页（未播放歌曲）
