@@ -24,7 +24,10 @@ export default {
         this.audioCtx.destroy()
       }
       this.audioCtx = wx.createInnerAudioContext()
-      this.audioCtx.obeyMuteSwitch = false
+      wx.setInnerAudioOption({
+        mixWithOther: false,
+        obeyMuteSwitch: false
+      })
       this.audioCtx.src = this.currentSong.url
       this.audioCtx.play()
       this.audioCtx.onPlay(() => {
