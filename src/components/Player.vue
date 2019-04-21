@@ -8,12 +8,14 @@
 
 <script>
 import VMiniPlayer from '@/components/MiniPlayer'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 export default {
   computed: {
     ...mapGetters([
       'currentSong',
-      'isPlaying'
+      'isPlaying',
+      'currentIndex',
+      'playList'
     ])
   },
   methods: {
@@ -27,7 +29,17 @@ export default {
       this.audioCtx.onPlay(() => {
         console.log(`歌曲《${this.currentSong.name}》开始播放,若控制台报错/没声音证明该歌曲是qq音乐vip歌曲，无法播放，请换曲试试`)
       })
-    }
+      this.audioCtx.onEnded(() => {
+        let index = this.currentIndex + 1
+        if (index === this.playList.length - 1) {
+          index = 0
+        }
+        this.setCurrentIndex(index)
+      })
+    },
+    ...mapMutations({
+      setCurrentIndex: 'SET_CURRENT_INDEX'
+    })
   },
   components: {
     VMiniPlayer
