@@ -16,7 +16,9 @@ export default {
   computed: {
     ...mapGetters([
       'currentSong',
-      'isPlaying'
+      'isPlaying',
+      'currentIndex',
+      'playList'
     ])
   },
   methods: {
@@ -27,10 +29,15 @@ export default {
       console.log('敬请期待~')
     },
     next () {
-      console.log('敬请期待~')
+      let index = this.currentIndex + 1
+      if (index === this.playList.length - 1) {
+        index = 0
+      }
+      this.setCurrentIndex(index)
     },
     ...mapMutations({
-      'setIsPlaying': 'SET_ISPLAYING'
+      'setIsPlaying': 'SET_ISPLAYING',
+      'setCurrentIndex': 'SET_CURRENT_INDEX'
     })
   }
 }

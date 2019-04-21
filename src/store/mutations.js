@@ -7,11 +7,14 @@ const mutations = {
   [types.SET_SINGER] (state, singer) {
     state.singer = singer
   },
-  [types.SET_CURRENTSONG] (state, song) {
-    state.currentSong = song
-  },
   [types.SET_ISPLAYING] (state, isPlaying) {
     state.isPlaying = isPlaying
+  },
+  [types.SET_PLAYLIST] (state, playList) {
+    state.playList = playList
+  },
+  [types.SET_CURRENT_INDEX] (state, index) {
+    state.currentIndex = index
   }
 }
 export default mutations

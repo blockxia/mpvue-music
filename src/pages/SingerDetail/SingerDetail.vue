@@ -2,7 +2,7 @@
    <div class="singer-detail">
       <div class="singer-info">
         <div class="photo">
-          <img :src="(currentSong.imageShouldShow && currentSong.image) ? currentSong.image : singer.img">
+          <img :src="(songImageShouldShow && currentSong.image) ? currentSong.image : singer.img">
         </div>
         <div class="blur"></div>
       </div>
@@ -30,8 +30,12 @@ export default {
   computed: {
     ...mapGetters([
       'singer',
-      'currentSong'
-    ])
+      'currentSong',
+      'playList'
+    ]),
+    songImageShouldShow () {
+      return this.playList && this.playList[0] && this.playList[0].id === this.songs[0].id
+    }
   },
   mounted () {
     this._getSingerDetail()
@@ -41,7 +45,6 @@ export default {
     _getSingerDetail () {
       getSingerDetail(this.singer.id).then((res) => {
         this.songs = this.normalizeSongs(res.list)
-        // console.log(this.songs)
       })
     },
     // 抽取歌曲list中有用的数据
@@ -61,13 +64,15 @@ export default {
       })
     },
     selectSong (item, index) {
-      // console.log(item)
-      item.imageShouldShow = 1
-      this.setCurrentSong(item)
+      if (!this.playList[0] || this.playList[0].id !== this.songs[0].id) {
+        this.setPlayList(this.songs)
+      }
+      this.setCurrentIndex(index)
       this.showMiniPlayer = true
     },
     ...mapMutations({
-      setCurrentSong: 'SET_CURRENTSONG'
+      setCurrentIndex: 'SET_CURRENT_INDEX',
+      setPlayList: 'SET_PLAYLIST'
     })
   },
   components: {

@@ -84,25 +84,13 @@ export default {
       return hot.concat(usual)
     },
     selectSinger (singer) {
-      // 使用vuex实现
-      this.currentSong.imageShouldShow = 0
-      this.setCurrentSong(this.currentSong)
       this.setSinger(singer)
       wx.navigateTo({
         url: '/pages/SingerDetail/main'
       })
-
-      // 使用微信小程序传参方式实现
-      // wx.navigateTo({
-      //   url: `/pages/SingerDetail/main?id=${item.id}&name=${item.name}&img=${item.img}`,
-      //   success: function () {
-      //     console.log('success')
-      //   }
-      // })
     },
     ...mapMutations({
-      setSinger: 'SET_SINGER',
-      setCurrentSong: 'SET_CURRENTSONG'
+      setSinger: 'SET_SINGER'
     })
   },
   components: {

@@ -3,6 +3,8 @@
  */
 export const SET_SINGER = 'SET_SINGER'
 
-export const SET_CURRENTSONG = 'SET_CURRENTSONG'
-
 export const SET_ISPLAYING = 'SET_ISPLAYING'
+
+export const SET_PLAYLIST = 'SET_PLAYLIST'
+
+export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
